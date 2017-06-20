@@ -1,0 +1,22 @@
+{
+    "name": "dungang/yii2-activity-workflow",
+    "description": "Workflow Manager for Yii2.",
+    "keywords": ["yii2", "workflow"],
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "authors": [
+        {
+            "name": "dun gang",
+            "email": "dungang@126.com",
+            "homepage": "https://github.com/dungang",
+            "role": "Creator"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "yiisoft/yii2": "~2.0.5"
+    },
+    "autoload": {
+        "psr-4": {"dungang\\activity\\workflow\\": ""}
+    }    
+}
