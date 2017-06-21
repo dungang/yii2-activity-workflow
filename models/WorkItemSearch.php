@@ -2,10 +2,8 @@
 
 namespace dungang\activity\workflow\models;
 
-use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use dungang\activity\workflow\models\WorkItem;
 
 /**
  * WorkItemSearch represents the model behind the search form of `dungang\activity\workflow\models\WorkItem`.

@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model dungang\activity\workflow\models\Transition */
 
-$this->title = $model->id;
+$this->title = $model->transitName;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Workflows'), 'url' => ['/workflow']];
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Transitions'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;

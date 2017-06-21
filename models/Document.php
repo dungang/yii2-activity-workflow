@@ -47,7 +47,7 @@ class Document extends \yii\db\ActiveRecord
             [['intro'], 'string'],
             [['createdAt', 'updatedAt'], 'safe'],
             [['document'], 'string', 'max' => 32],
-            [['name', 'docModel'], 'string', 'max' => 128],
+            [['name', 'docHandler'], 'string', 'max' => 128],
             [['document'], 'unique'],
         ];
     }

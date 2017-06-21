@@ -20,7 +20,7 @@ $tasks = \dungang\activity\workflow\models\Task::find()->indexBy('id')->all();
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a(Yii::t('app', 'Create Workflow'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('app', 'Create Workflow'), ['create'], ['class' => 'btn btn-success mjax']) ?>
     </p>
 
     <?= GridView::widget([
@@ -39,7 +39,7 @@ $tasks = \dungang\activity\workflow\models\Task::find()->indexBy('id')->all();
             ],
             'isValid',
             [
-                'class' => 'yii\grid\ActionColumn',
+                'class' => 'dungang\mjax\ActionColumn',
                 'template'=>'{/workflow/transition} {/workflow/place} {/workflow/arc} {view} {update} {delete}',
                 'buttons'=>[
                     '/workflow/transition'=>function ($url) {

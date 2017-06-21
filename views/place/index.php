@@ -39,12 +39,9 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?php Pjax::end(); ?>
             </div>
             <div class="col-md-6">
-
-                <div class="col-md-6">
                     <?= \dungang\activity\workflow\widgets\WorkflowChart::widget(
                         \dungang\activity\workflow\helpers\WorkflowHelper::getWorkflowDefinitionData($workflowId)
                     ) ?>
-                </div>
             </div>
         </div>
     </div>

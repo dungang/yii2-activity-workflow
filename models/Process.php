@@ -25,7 +25,7 @@ class Process extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'wf_case';
+        return 'wf_process';
     }
 
 

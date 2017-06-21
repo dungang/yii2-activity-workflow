@@ -56,7 +56,7 @@ class WorkflowChart extends Widget
         ]
     ];
     public $options = [
-        'style'=>'height:500px;'
+        'style'=>'height:500px;width:100%;'
     ];
 
     public function run()
@@ -89,7 +89,7 @@ class WorkflowChart extends Widget
                 'color'=>$this->transitionColor,
                 'size'=> 40,
                 'shape'=>'box',
-                'margin'=>20,
+                'margin'=>16,
                 'font'=>['color'=>'white']
             ];
         },$this->transitions);

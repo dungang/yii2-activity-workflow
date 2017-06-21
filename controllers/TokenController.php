@@ -21,9 +21,6 @@ class TokenController extends BaseController
         return [
             'verbs' => [
                 'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['POST'],
-                ],
             ],
         ];
     }

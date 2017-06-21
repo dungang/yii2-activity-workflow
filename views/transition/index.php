@@ -43,8 +43,6 @@ $tasks = \dungang\activity\workflow\models\Task::find()->indexBy('id')->all();
                         'role',
                         'triggerSource',
                         //'timeLimit:datetime',
-                        'intro:ntext',
-
                         ['class' => 'dungang\mjax\ActionColumn'],
                     ],
                 ]); ?>

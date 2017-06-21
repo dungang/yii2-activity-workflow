@@ -10,7 +10,7 @@ use yii\widgets\ActiveForm;
 
 <div class="workflow-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['id'=>'workflow-form']); ?>
 
     <?= $form->field($model, 'workflowName')->textInput(['maxlength' => true]) ?>
 

@@ -109,7 +109,7 @@ class ArcController extends BaseController
     {
         $this->findModel($workflowId, $placeId, $transitionId)->delete();
 
-        return $this->redirect(['index']);
+        return $this->redirect(['index','id'=>$workflowId]);
     }
 
     /**

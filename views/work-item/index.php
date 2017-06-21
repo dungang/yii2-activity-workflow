@@ -17,26 +17,18 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="panel-body">
 
         <?php Pjax::begin(); ?>
-        <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
-        <p>
-            <?= Html::a(Yii::t('app', 'Create Work Item'), ['create'], ['class' => 'btn btn-success']) ?>
-        </p>
 
         <?= GridView::widget([
             'dataProvider' => $dataProvider,
             'filterModel' => $searchModel,
             'columns' => [
-                ['class' => 'yii\grid\SerialColumn'],
-
-                'id',
                 'workflowId',
                 'placeId',
                 'processId',
                 'taskId',
                 // 'context',
                 // 'triggerSource',
-                // 'workStatus',
+                'workStatus',
                 // 'enabledAt',
                 // 'deadlinedAt',
                 // 'finishedAt',
@@ -44,7 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 // 'user',
                 // 'role',
 
-                ['class' => 'yii\grid\ActionColumn'],
+                ['class' => 'dungang\mjax\ActionColumn','template'=>'{view}'],
             ],
         ]); ?>
         <?php Pjax::end(); ?>

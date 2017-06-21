@@ -62,7 +62,7 @@ $transitions = is_array($data['transitions'])? \yii\helpers\ArrayHelper::index($
                             }
                         ],
                         'arcType',
-                        ['class' => 'yii\grid\ActionColumn'],
+                        ['class' => 'dungang\mjax\ActionColumn'],
                     ],
                 ]); ?>
                 <?php Pjax::end(); ?>
