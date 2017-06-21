@@ -26,7 +26,7 @@ $transitions = is_array($data['transitions'])? \yii\helpers\ArrayHelper::index($
                 <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
                 <p>
-                    <?= Html::a(Yii::t('app', 'Create Arc'), ['create', 'workflowId' => $workflowId], ['class' => 'btn btn-success']) ?>
+                    <?= Html::a(Yii::t('app', 'Create Arc'), ['create', 'workflowId' => $workflowId], ['class' => 'btn btn-success mjax']) ?>
                 </p>
 
                 <?= GridView::widget([

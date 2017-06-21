@@ -8,9 +8,9 @@ use yii\data\ActiveDataProvider;
 use dungang\activity\workflow\models\Place;
 
 /**
- * PlacetSearch represents the model behind the search form of `dungang\activity\workflow\models\Place`.
+ * PlaceSearch represents the model behind the search form of `dungang\activity\workflow\models\Place`.
  */
-class PlacetSearch extends Place
+class PlaceSearch extends Place
 {
     /**
      * @inheritdoc

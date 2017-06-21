@@ -7,10 +7,8 @@ use yii\widgets\ActiveForm;
 /* @var $model dungang\activity\workflow\models\Place */
 /* @var $form yii\widgets\ActiveForm */
 ?>
-<div class="row">
-    <div class="col-md-6">
-
-        <?php $form = ActiveForm::begin(); ?>
+<div>
+        <?php $form = ActiveForm::begin(['id'=>'place-form']); ?>
 
         <?= $form->field($model, 'placeName')->textInput(['maxlength' => true]) ?>
 
@@ -23,13 +21,5 @@ use yii\widgets\ActiveForm;
         <div class="form-group">
             <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>
         </div>
-
         <?php ActiveForm::end(); ?>
-
-    </div>
-    <div class="col-md-6">
-        <?= \dungang\activity\workflow\widgets\WorkflowChart::widget(
-            \dungang\activity\workflow\helpers\WorkflowHelper::getWorkflowDefinitionData($model->workflowId)
-        )?>
-    </div>
 </div>

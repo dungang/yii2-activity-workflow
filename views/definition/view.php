@@ -9,7 +9,7 @@ use yii\widgets\DetailView;
 /* @var $transitions dungang\activity\workflow\models\Transition[] */
 /* @var $arcs dungang\activity\workflow\models\Arc[] */
 
-$this->title = $model->id;
+$this->title = $model->workflowName;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Workflows'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

@@ -76,6 +76,7 @@ class WorkflowChart extends Widget
                 'color'=>$this->placeColor,
                 'shape'=>'circle',
                 'level'=>$level,
+                'title'=>$place->intro,
                 'margin'=>10,
                 'font'=>['color'=>'white','size'=>18]
             ];

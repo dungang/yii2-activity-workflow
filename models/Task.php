@@ -45,7 +45,7 @@ class Task extends \yii\db\ActiveRecord
             [['createdAt', 'updatedAt'], 'safe'],
             [['createdUser', 'updatedUser'], 'integer'],
             [['taskName'], 'string', 'max' => 128],
-            [['permission', 'params'], 'string', 'max' => 64],
+            [['handler', 'params'], 'string', 'max' => 64],
             [['intro'], 'string', 'max' => 255],
         ];
     }

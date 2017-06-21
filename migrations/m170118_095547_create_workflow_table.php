@@ -48,6 +48,7 @@ class m170118_095547_create_workflow_table extends Migration
             //1 = start place (there can be only one).
             //5 = intermediate place (there can be any number).
             //9 = end place (there can be only one).
+            //'placeType'=>$this->smallInteger(4)->defaultValue(1)->comment('When a new workflow process is created a start place and an end place will be created automatically. The user is responsible for creating all the intermediate places.'),
             '`placeType` ENUM(\'START\', \'INTER\', \'END\') default "INTER" COMMENT "When a new workflow process is created a start place and an end place will be created automatically. The user is responsible for creating all the intermediate places."',
             'createdAt'=>$this->dateTime()->comment('The date and time on which this record was created.'),
             'createdUser'=>$this->integer()->comment('The identity of the user who created this record.'),
@@ -77,6 +78,7 @@ class m170118_095547_create_workflow_table extends Migration
             'direction enum("IN","OUT") default "IN"',
             '`arcType` ENUM(\'SEQUENCE\', \'EXPLICIT_OR_SPLIT\', \'IMPLICIT_OR_SPLIT\', \'OR_JOIN\', \'AND_SPLIT\', \'AND_JOIN\') DEFAULT \'SEQUENCE\'',
             'conditionExpress'=>$this->string(255)->comment('guard'),
+            'conditionIntro'=>$this->string(64)->notNull()->defaultValue(''),
             'createdAt'=>$this->dateTime()->comment('The date and time on which this record was created.'),
             'createdUser'=>$this->integer()->comment('The identity of the user who created this record.'),
             'updatedAt'=>$this->dateTime()->comment('The date and time on which this record was last changed.'),

@@ -8,10 +8,9 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="row">
-    <div class="col-md-6">
+<div>
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['id'=>'transition-form']); ?>
 
     <?= $form->field($model, 'transitName')->textInput(['maxlength' => true]) ?>
 
@@ -32,11 +31,4 @@ use yii\widgets\ActiveForm;
     </div>
 
     <?php ActiveForm::end(); ?>
-
-</div>
-    <div class="col-md-6">
-        <?=\dungang\activity\workflow\widgets\WorkflowChart::widget(
-            \dungang\activity\workflow\helpers\WorkflowHelper::getWorkflowDefinitionData($model->workflowId)
-        )?>
-    </div>
 </div>

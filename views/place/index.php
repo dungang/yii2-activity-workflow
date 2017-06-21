@@ -5,7 +5,7 @@ use yii\grid\GridView;
 use yii\widgets\Pjax;
 
 /* @var $this yii\web\View */
-/* @var $searchModel dungang\activity\workflow\models\PlacetSearch */
+/* @var $searchModel dungang\activity\workflow\models\PlaceSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 /* @var $workflowId integer */
 
@@ -24,7 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
                 <p>
-                    <?= Html::a(Yii::t('app', 'Create Place'), ['create', 'workflowId' => $workflowId], ['class' => 'btn btn-success']) ?>
+                    <?= Html::a(Yii::t('app', 'Create Place'), ['create', 'workflowId' => $workflowId], ['class' => 'btn btn-success mjax']) ?>
                 </p>
 
                 <?= GridView::widget([
@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         'placeName',
                         'intro',
                         'placeType',
-                        ['class' => 'yii\grid\ActionColumn'],
+                        ['class' => 'dungang\mjax\ActionColumn'],
                     ],
                 ]); ?>
                 <?php Pjax::end(); ?>

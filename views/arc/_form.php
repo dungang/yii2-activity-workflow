@@ -8,11 +8,8 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="row">
-    <div class="col-md-6">
-        <div class="arc-form">
-
-            <?php $form = ActiveForm::begin(); ?>
+<div>
+            <?php $form = ActiveForm::begin(['id'=>'arc-form']); ?>
 
             <?= $form->field($model, 'workflowId')->dropDownList(\dungang\activity\workflow\models\Workflow::dropItems(), ['readOnly' => true]) ?>
 
@@ -31,12 +28,4 @@ use yii\widgets\ActiveForm;
             </div>
 
             <?php ActiveForm::end(); ?>
-
-        </div>
-    </div>
-    <div class="col-md-6">
-        <?= \dungang\activity\workflow\widgets\WorkflowChart::widget(
-            \dungang\activity\workflow\helpers\WorkflowHelper::getWorkflowDefinitionData($model->workflowId)
-        ) ?>
-    </div>
 </div>

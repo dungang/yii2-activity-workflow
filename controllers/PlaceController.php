@@ -4,7 +4,7 @@ namespace dungang\activity\workflow\controllers;
 
 use Yii;
 use dungang\activity\workflow\models\Place;
-use dungang\activity\workflow\models\PlacetSearch;
+use dungang\activity\workflow\models\PlaceSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -35,7 +35,7 @@ class PlaceController extends Controller
      */
     public function actionIndex($id)
     {
-        $searchModel = new PlacetSearch(['workflowId'=>$id]);
+        $searchModel = new PlaceSearch(['workflowId'=>$id]);
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [

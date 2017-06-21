@@ -15,19 +15,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div class="panel-heading"><strong><?= Html::encode($this->title) ?></strong></div>
     <div class="panel-body">
-        <div class="row">
-            <div class="col-md-6">
-
-                <p>
-                    <?= Html::a(Yii::t('app', 'Update'), ['update', 'workflowId' => $model->workflowId, 'placeId' => $model->placeId, 'transitionId' => $model->transitionId], ['class' => 'btn btn-primary']) ?>
-                    <?= Html::a(Yii::t('app', 'Delete'), ['delete', 'workflowId' => $model->workflowId, 'placeId' => $model->placeId, 'transitionId' => $model->transitionId], [
-                        'class' => 'btn btn-danger',
-                        'data' => [
-                            'confirm' => Yii::t('app', 'Are you sure you want to delete this item?'),
-                            'method' => 'post',
-                        ],
-                    ]) ?>
-                </p>
 
                 <?= DetailView::widget([
                     'model' => $model,
@@ -44,12 +31,5 @@ $this->params['breadcrumbs'][] = $this->title;
                         'updatedUser',
                     ],
                 ]) ?>
-            </div>
-            <div class="col-md-6">
-                <?= \dungang\activity\workflow\widgets\WorkflowChart::widget(
-                    \dungang\activity\workflow\helpers\WorkflowHelper::getWorkflowDefinitionData($model->workflowId)
-                ) ?>
-            </div>
-        </div>
     </div>
 </div>
