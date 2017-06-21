@@ -5,14 +5,13 @@ namespace dungang\activity\workflow\controllers;
 use Yii;
 use dungang\activity\workflow\models\Document;
 use dungang\activity\workflow\models\DocumentSearch;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
  * DocumentController implements the CRUD actions for Document model.
  */
-class DocumentController extends Controller
+class DocumentController extends BaseController
 {
     /**
      * @inheritdoc

@@ -5,14 +5,13 @@ namespace dungang\activity\workflow\controllers;
 use Yii;
 use dungang\activity\workflow\models\Place;
 use dungang\activity\workflow\models\PlaceSearch;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
  * PlaceController implements the CRUD actions for Place model.
  */
-class PlaceController extends Controller
+class PlaceController extends BaseController
 {
     /**
      * @inheritdoc

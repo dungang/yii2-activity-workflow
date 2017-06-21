@@ -5,14 +5,13 @@ namespace dungang\activity\workflow\controllers;
 use Yii;
 use dungang\activity\workflow\models\Token;
 use dungang\activity\workflow\models\TokenSearch;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
  * TokenController implements the CRUD actions for Token model.
  */
-class TokenController extends Controller
+class TokenController extends BaseController
 {
     /**
      * @inheritdoc

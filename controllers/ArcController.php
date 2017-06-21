@@ -5,14 +5,13 @@ namespace dungang\activity\workflow\controllers;
 use Yii;
 use dungang\activity\workflow\models\Arc;
 use dungang\activity\workflow\models\ArcSearch;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
  * ArcController implements the CRUD actions for Arc model.
  */
-class ArcController extends Controller
+class ArcController extends BaseController
 {
     /**
      * @inheritdoc

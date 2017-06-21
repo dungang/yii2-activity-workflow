@@ -8,14 +8,13 @@ use dungang\activity\workflow\models\Transition;
 use Yii;
 use dungang\activity\workflow\models\Workflow;
 use dungang\activity\workflow\models\WorkflowSearch;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
  * WorkflowController implements the CRUD actions for Workflow model.
  */
-class DefinitionController extends Controller
+class DefinitionController extends BaseController
 {
     /**
      * @inheritdoc

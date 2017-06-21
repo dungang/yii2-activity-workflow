@@ -5,14 +5,13 @@ namespace dungang\activity\workflow\controllers;
 use Yii;
 use dungang\activity\workflow\models\Task;
 use dungang\activity\workflow\models\TaskSearch;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
  * TaskController implements the CRUD actions for Task model.
  */
-class TaskController extends Controller
+class TaskController extends BaseController
 {
     /**
      * @inheritdoc

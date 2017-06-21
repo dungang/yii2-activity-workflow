@@ -5,14 +5,13 @@ namespace dungang\activity\workflow\controllers;
 use Yii;
 use dungang\activity\workflow\models\WorkItem;
 use dungang\activity\workflow\models\WorkItemSearch;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
  * WorkItemController implements the CRUD actions for WorkItem model.
  */
-class WorkItemController extends Controller
+class WorkItemController extends BaseController
 {
     /**
      * @inheritdoc

@@ -5,14 +5,13 @@ namespace dungang\activity\workflow\controllers;
 use Yii;
 use dungang\activity\workflow\models\Process;
 use dungang\activity\workflow\models\ProcessSearch;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
  * ProcessController implements the CRUD actions for Process model.
  */
-class ProcessController extends Controller
+class ProcessController extends BaseController
 {
     /**
      * @inheritdoc

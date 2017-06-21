@@ -5,14 +5,13 @@ namespace dungang\activity\workflow\controllers;
 use Yii;
 use dungang\activity\workflow\models\Transition;
 use dungang\activity\workflow\models\TransitionSearch;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
  * TransitionController implements the CRUD actions for Transition model.
  */
-class TransitionController extends Controller
+class TransitionController extends BaseController
 {
     /**
      * @inheritdoc
