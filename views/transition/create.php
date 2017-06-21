@@ -7,6 +7,7 @@ use yii\helpers\Html;
 /* @var $model dungang\activity\workflow\models\Transition */
 
 $this->title = Yii::t('app', 'Create Transition');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Workflows'), 'url' => ['/workflow']];
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Transitions'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

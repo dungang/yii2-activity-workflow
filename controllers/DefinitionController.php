@@ -2,6 +2,9 @@
 
 namespace dungang\activity\workflow\controllers;
 
+use dungang\activity\workflow\models\Arc;
+use dungang\activity\workflow\models\Place;
+use dungang\activity\workflow\models\Transition;
 use Yii;
 use dungang\activity\workflow\models\Workflow;
 use dungang\activity\workflow\models\WorkflowSearch;
@@ -53,6 +56,9 @@ class DefinitionController extends Controller
     {
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'places'=>Place::findAll(['workflowId'=>$id]),
+            'transitions'=>Transition::findAll(['workflowId'=>$id]),
+            'arcs'=>Arc::findAll(['workflowId'=>$id]),
         ]);
     }
 

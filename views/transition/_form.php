@@ -8,7 +8,8 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="transition-form">
+<div class="row">
+    <div class="col-md-6">
 
     <?php $form = ActiveForm::begin(); ?>
 
@@ -32,4 +33,10 @@ use yii\widgets\ActiveForm;
 
     <?php ActiveForm::end(); ?>
 
+</div>
+    <div class="col-md-6">
+        <?=\dungang\activity\workflow\widgets\WorkflowChart::widget(
+            \dungang\activity\workflow\helpers\WorkflowHelper::getWorkflowDefinitionData($model->workflowId)
+        )?>
+    </div>
 </div>

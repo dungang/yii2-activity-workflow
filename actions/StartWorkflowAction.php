@@ -9,18 +9,17 @@ namespace dungang\activity\workflow\actions;
 
 
 use dungang\activity\workflow\services\WorkflowCase;
-use dungang\activity\workflow\services\WorkflowDefinition;
 use yii\base\Action;
 
 class StartWorkflowAction extends Action
 {
     public function run($doc,$context){
-        $wfDefinition = new WorkflowDefinition([
-            'docName'=>$doc
-        ]);
         $wfCase = new WorkflowCase([
-            'wfDefinition'=>$wfDefinition,
+            'doc'=>$doc
         ]);
         $wfCase->start($context);
+        $session = \Yii::$app->session;
+        $session->setFlash('success', \Yii::t('app','You have successfully started your workflow case.'));
+        $this->controller->goBack();
     }
 }

@@ -33,14 +33,15 @@ class TransitionController extends Controller
      * Lists all Transition models.
      * @return mixed
      */
-    public function actionIndex()
+    public function actionIndex($id)
     {
-        $searchModel = new TransitionSearch();
+        $searchModel = new TransitionSearch(['workflowId'=>$id]);
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'workflowId'=>$id,
         ]);
     }
 

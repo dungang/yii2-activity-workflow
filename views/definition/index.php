@@ -9,6 +9,8 @@ use yii\widgets\Pjax;
 
 $this->title = Yii::t('app', 'Workflows');
 $this->params['breadcrumbs'][] = $this->title;
+
+$tasks = \dungang\activity\workflow\models\Task::find()->indexBy('id')->all();
 ?>
 <div class="panel panel-info">
 
@@ -26,36 +28,43 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             'workflowName',
-            'startTask',
+            [
+                'attribute'=>'startTask',
+                'content' => function($model) use($tasks){
+                    if(isset($tasks[$model->startTask])) {
+                        return $tasks[$model->startTask]->taskName;
+                    }
+                    return $model->startTask;
+                }
+            ],
             'isValid',
-            'intro:ntext',
             [
                 'class' => 'yii\grid\ActionColumn',
                 'template'=>'{/workflow/transition} {/workflow/place} {/workflow/arc} {view} {update} {delete}',
                 'buttons'=>[
-                    '/workflow/transition'=>function ($url, $model, $key) {
+                    '/workflow/transition'=>function ($url) {
                         $options = [
                             'title' => Yii::t('yii', 'Transition'),
                             'aria-label' => Yii::t('yii', 'Transition'),
                             'data-pjax' => '0',
                         ];
-                        return Html::a('<span class="fa fa-ban"></span>', $url, $options);
+                        return Html::a('<span class="fa fa-ban"></span> ' . \Yii::t('app','Transitions'), $url, $options);
                     },
-                    '/workflow/place'=>function ($url, $model, $key) {
+                    '/workflow/place'=>function ($url) {
                         $options = [
                             'title' => Yii::t('yii', 'Place'),
                             'aria-label' => Yii::t('yii', 'Place'),
                             'data-pjax' => '0',
                         ];
-                        return Html::a('<span class="fa fa-home"></span>', $url, $options);
+                        return Html::a('<span class="fa fa-home"></span> ' . \Yii::t('app','Places'), $url, $options);
                     },
-                    '/workflow/arc'=>function ($url, $model, $key) {
+                    '/workflow/arc'=>function ($url) {
                         $options = [
                             'title' => Yii::t('yii', 'Arc'),
                             'aria-label' => Yii::t('yii', 'Arc'),
                             'data-pjax' => '0',
                         ];
-                        return Html::a('<span class="fa fa-arrow-circle-o-right"></span>', $url, $options);
+                        return Html::a('<span class="fa fa-arrow-circle-o-right"></span> ' . \Yii::t('app','Arcs'), $url, $options);
                     },
                 ]
             ],

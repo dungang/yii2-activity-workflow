@@ -8,12 +8,9 @@
 namespace dungang\activity\workflow\helpers;
 
 
-use dungang\activity\workflow\models\Document;
+use dungang\activity\workflow\models\Arc;
 use dungang\activity\workflow\models\Place;
-use dungang\activity\workflow\models\Process;
-use dungang\activity\workflow\models\Token;
-use dungang\activity\workflow\models\Workflow;
-use yii\db\Expression;
+use dungang\activity\workflow\models\Transition;
 use yii\db\Query;
 
 class WorkflowHelper
@@ -38,50 +35,16 @@ class WorkflowHelper
         return [];
     }
 
-    public static function startWorkflowByDocumentId($document,$docId) {
-        //find doc model
-        $doc = Document::find()->where(['document'=>$document])->one();
-
-        if ($doc) {
-
-            //find doc's workflow
-            $wf = Workflow::find()->where(['id'=>$doc->workflowId,'isValid'=>['YES','USED']])->one();
-
-            if ($wf) {
-                //find start place
-                $place = Place::find()->where(['workflowId'=>$wf->id,'placeType'=>'START'])->one();
-
-                if ($place) {
-                    // start task
-                    // The identity of the application task which, when executed,
-                    // creates a new workflow process and puts a token on the start place.
-                    //create Process
-                    $process = new Process();
-                    $process->workflowId = $wf->id;
-                    $process->context = $docId;
-                    $process->processStatus = 'OPEN';
-                    if ($process->save(false)) {
-                        //create token
-                        $token = new Token();
-                        $token->context = $docId;
-                        $token->workflowId = $wf->id;
-                        $token->processId = $process->id;
-                        $token->placeId = $place->id;
-                        $token->tokenStatus = 'FREE';
-                        $token->enabledAt = new Expression('NOW()');
-                        if ($token->save()) {
-                            if ($wf->isValid == 'YES') {
-                                $wf->isValid = 'USED';
-                                $wf->usedAt = new Expression('NOW()');
-                                $wf->save(false);
-                            }
-                        }
-                    }
-
-                }
-
-            }
-        }
-
+    /**
+     * @param $workflowId string
+     * @return array
+     */
+    public static function getWorkflowDefinitionData($workflowId)
+    {
+        return [
+            'places'=>Place::findAll(['workflowId'=>$workflowId]),
+            'transitions'=>Transition::findAll(['workflowId'=>$workflowId]),
+            'arcs'=>Arc::findAll(['workflowId'=>$workflowId]),
+        ];
     }
 }

@@ -24,11 +24,23 @@ class WorkflowCase extends Component
     /**
      * @var WorkflowDefinition;
      */
-    public $wfDefinition;
+    protected $wfDefinition;
 
     public $process;
 
     public $workItems;
+
+    /**
+     * @var string
+     */
+    public $doc;
+
+    public function init()
+    {
+        $this->wfDefinition = new WorkflowDefinition([
+            'docName'=>$this->doc
+        ]);
+    }
 
     public function instance($processId)
     {
@@ -42,15 +54,15 @@ class WorkflowCase extends Component
 
     public function start($context)
     {
-        $this->process = $this->createProcess();
+        $this->process = $this->createProcess($context);
         $this->createToken($this->wfDefinition->startPlace,$context);
     }
 
-    protected function createProcess()
+    protected function createProcess($context)
     {
         $process = new Process();
         $process->workflowId = $this->wfDefinition->workflow->id;
-        $process->context = $this->context;
+        $process->context = $context;
         $process->processStatus = 'OPEN';
         $process->startedAt = new Expression('NOW()');
         $process->save(false);

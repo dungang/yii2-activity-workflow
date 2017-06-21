@@ -19,7 +19,7 @@ class PlacetSearch extends Place
     {
         return [
             [['id', 'workflowId', 'createdUser', 'updatedUser'], 'integer'],
-            [['placeName', 'placeType', 'createdAt', 'updatedAt'], 'safe'],
+            [['placeName','intro', 'placeType', 'createdAt', 'updatedAt'], 'safe'],
         ];
     }
 
@@ -67,7 +67,9 @@ class PlacetSearch extends Place
             'updatedUser' => $this->updatedUser,
         ]);
 
-        $query->andFilterWhere(['like', 'placeName', $this->placeName])
+        $query
+            ->andFilterWhere(['like', 'placeName', $this->placeName])
+            ->andFilterWhere(['like', 'intro', $this->intro])
             ->andFilterWhere(['like', 'placeType', $this->placeType]);
 
         return $dataProvider;

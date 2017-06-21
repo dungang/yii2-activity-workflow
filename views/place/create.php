@@ -7,6 +7,7 @@ use yii\helpers\Html;
 /* @var $model dungang\activity\workflow\models\Place */
 
 $this->title = Yii::t('app', 'Create Place');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Workflows'), 'url' => ['/workflow']];
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Places'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

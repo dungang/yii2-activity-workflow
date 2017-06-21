@@ -7,6 +7,7 @@ use yii\helpers\Html;
 /* @var $model dungang\activity\workflow\models\Arc */
 
 $this->title = Yii::t('app', 'Create Arc');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Workflows'), 'url' => ['/workflow']];
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Arcs'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

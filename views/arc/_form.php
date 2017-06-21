@@ -8,26 +8,35 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="arc-form">
+<div class="row">
+    <div class="col-md-6">
+        <div class="arc-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+            <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'workflowId')->dropDownList(\dungang\activity\workflow\models\Workflow::dropItems(),['readOnly'=>true]) ?>
+            <?= $form->field($model, 'workflowId')->dropDownList(\dungang\activity\workflow\models\Workflow::dropItems(), ['readOnly' => true]) ?>
 
-    <?= $form->field($model, 'placeId')->dropDownList(\dungang\activity\workflow\models\Place::dropItems($model->workflowId)) ?>
+            <?= $form->field($model, 'placeId')->dropDownList(\dungang\activity\workflow\models\Place::dropItems($model->workflowId)) ?>
 
-    <?= $form->field($model, 'transitionId')->dropDownList(\dungang\activity\workflow\models\Transition::dropItems($model->workflowId)) ?>
+            <?= $form->field($model, 'transitionId')->dropDownList(\dungang\activity\workflow\models\Transition::dropItems($model->workflowId)) ?>
 
-    <?= $form->field($model, 'direction')->radioList([ 'IN' => 'IN', 'OUT' => 'OUT', ], ['prompt' => '']) ?>
+            <?= $form->field($model, 'direction')->radioList(['IN' => 'IN', 'OUT' => 'OUT',], ['prompt' => '']) ?>
 
-    <?= $form->field($model, 'arcType')->radioList([ 'SEQUENCE' => 'SEQUENCE', 'EXPLICIT_OR_SPLIT' => 'EXPLICIT OR SPLIT', 'IMPLICIT_OR_SPLIT' => 'IMPLICIT OR SPLIT', 'OR_JOIN' => 'OR JOIN', 'AND_SPLIT' => 'AND SPLIT', 'AND_JOIN' => 'AND JOIN', ], ['prompt' => '']) ?>
+            <?= $form->field($model, 'arcType')->radioList(['SEQUENCE' => 'SEQUENCE', 'EXPLICIT_OR_SPLIT' => 'EXPLICIT OR SPLIT', 'IMPLICIT_OR_SPLIT' => 'IMPLICIT OR SPLIT', 'OR_JOIN' => 'OR JOIN', 'AND_SPLIT' => 'AND SPLIT', 'AND_JOIN' => 'AND JOIN',], ['prompt' => '']) ?>
 
-    <?= $form->field($model, 'conditionExpress')->textarea(['maxlength' => true]) ?>
+            <?= $form->field($model, 'conditionExpress')->textarea(['maxlength' => true]) ?>
 
-    <div class="form-group">
-        <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>
+            <div class="form-group">
+                <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>
+            </div>
+
+            <?php ActiveForm::end(); ?>
+
+        </div>
     </div>
-
-    <?php ActiveForm::end(); ?>
-
+    <div class="col-md-6">
+        <?= \dungang\activity\workflow\widgets\WorkflowChart::widget(
+            \dungang\activity\workflow\helpers\WorkflowHelper::getWorkflowDefinitionData($model->workflowId)
+        ) ?>
+    </div>
 </div>

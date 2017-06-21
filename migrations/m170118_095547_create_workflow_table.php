@@ -43,6 +43,7 @@ class m170118_095547_create_workflow_table extends Migration
             'id' => $this->primaryKey()->unsigned(),
             'workflowId'=> $this->integer()->notNull()->unsigned()->comment('Required. Points to an entry on the WORKFLOW table.'),
             'placeName'=>$this->string(64)->notNull(),
+            'intro'=>$this->string(64)->comment('intro'),
             //Required. Valid options are:
             //1 = start place (there can be only one).
             //5 = intermediate place (there can be any number).

@@ -11,6 +11,7 @@ use Yii;
  * @property string $id
  * @property string $workflowId Required. Points to an entry on the WORKFLOW table.
  * @property string $placeName
+ * @property string $intro
  * @property string $placeType When a new workflow process is created a start place and an end place will be created automatically. The user is responsible for creating all the intermediate places.
  * @property string $createdAt The date and time on which this record was created.
  * @property int $createdUser The identity of the user who created this record.
@@ -44,7 +45,7 @@ class Place extends \yii\db\ActiveRecord
             [['workflowId', 'createdUser', 'updatedUser'], 'integer'],
             [['placeType'], 'string'],
             [['createdAt', 'updatedAt'], 'safe'],
-            [['placeName'], 'string', 'max' => 64],
+            [['placeName','intro'], 'string', 'max' => 64],
         ];
     }
 
@@ -57,6 +58,7 @@ class Place extends \yii\db\ActiveRecord
             'id' => Yii::t('app', 'ID'),
             'workflowId' => Yii::t('app', 'Workflow ID'),
             'placeName' => Yii::t('app', 'Place Name'),
+            'intro' => Yii::t('app', 'Intro'),
             'placeType' => Yii::t('app', 'Place Type'),
             'createdAt' => Yii::t('app', 'Created At'),
             'createdUser' => Yii::t('app', 'Created User'),
