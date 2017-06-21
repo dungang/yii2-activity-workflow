@@ -12,25 +12,38 @@ use yii\widgets\DetailView;
 $this->title = $model->workflowName;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Workflows'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
+$data = \dungang\activity\workflow\helpers\WorkflowHelper::getWorkflowDefinitionData($model->id);
+$data['id'] = 'workflow-chart';
 ?>
 <div class="panel panel-info">
 
     <div class="panel-heading"><strong><?= Html::encode($this->title) ?></strong></div>
     <div class="panel-body">
-
-        <?= DetailView::widget([
-            'model' => $model,
-            'attributes' => [
-                'id',
-                'workflowName',
-                'startTask',
-                'isValid',
-                'intro:ntext',
-                'createdAt',
-                'createdUser',
-                'updatedAt',
-                'updatedUser',
-            ],
-        ]) ?>
+        <?=\yii\bootstrap\Tabs::widget([
+            'items'=>[
+                [
+                    'label'=>'流程图',
+                    'active'=>true,
+                    'content'=> \dungang\activity\workflow\widgets\WorkflowChart::widget($data)
+                ],
+                [
+                    'label'=>'信息',
+                    'content'=> DetailView::widget([
+                        'model' => $model,
+                        'attributes' => [
+                            'id',
+                            'workflowName',
+                            'startTask',
+                            'isValid',
+                            'intro:ntext',
+                            'createdAt',
+                            'createdUser',
+                            'updatedAt',
+                            'updatedUser',
+                        ],
+                    ])
+                ],
+            ]
+        ])?>
     </div>
 </div>
