@@ -42,7 +42,7 @@ class Document extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['document', 'workflowId', 'name'], 'required'],
+            [['document', 'name'], 'required'],
             [['workflowId', 'createdUser', 'updatedUser'], 'integer'],
             [['intro'], 'string'],
             [['createdAt', 'updatedAt'], 'safe'],
@@ -82,6 +82,6 @@ class Document extends \yii\db\ActiveRecord
 
     public static function dropItems()
     {
-        return WorkflowHelper::collection(self::className());
+        return WorkflowHelper::collection(self::className(),'name','document');
     }
 }

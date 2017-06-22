@@ -19,7 +19,7 @@ class WorkflowSearch extends Workflow
     {
         return [
             [['id', 'startTask', 'createdUser', 'updatedUser'], 'integer'],
-            [['workflowName', 'isValid', 'intro','usedAt', 'archivedAt',  'createdAt', 'updatedAt'], 'safe'],
+            [['workflowName', 'document', 'isValid', 'intro','usedAt', 'archivedAt',  'createdAt', 'updatedAt'], 'safe'],
         ];
     }
 
@@ -70,6 +70,7 @@ class WorkflowSearch extends Workflow
         ]);
 
         $query->andFilterWhere(['like', 'workflowName', $this->workflowName])
+            ->andFilterWhere(['like', 'document', $this->document])
             ->andFilterWhere(['like', 'isValid', $this->isValid])
             ->andFilterWhere(['like', 'intro', $this->intro]);
 

@@ -14,6 +14,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'workflowName')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'document')->dropDownList(\dungang\activity\workflow\models\Document::dropItems()) ?>
+
     <?= $form->field($model, 'intro')->textarea(['rows' => 6]) ?>
 
     <?= $form->field($model, 'startTask')->dropDownList(\dungang\activity\workflow\models\Task::dropItems()) ?>

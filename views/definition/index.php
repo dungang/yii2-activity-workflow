@@ -28,6 +28,7 @@ $tasks = \dungang\activity\workflow\models\Task::find()->indexBy('id')->all();
         'filterModel' => $searchModel,
         'columns' => [
             'workflowName',
+            'document',
             [
                 'attribute'=>'startTask',
                 'content' => function($model) use($tasks){

@@ -10,6 +10,7 @@ use Yii;
  *
  * @property string $id
  * @property string $workflowName
+ * @property string $document
  * @property int $startTask Required. The identity of the application task which, when executed, creates a new workflow case and puts a token on the start place.
  * @property string $isValid Default is NO. After defining all the places, transitions and arcs for a workflow process it must be validated before it can be used. This field shows the result of that validation.
  * @property string $intro
@@ -43,11 +44,12 @@ class Workflow extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['workflowName'], 'required'],
+            [['workflowName','document'], 'required'],
             [['startTask', 'createdUser', 'updatedUser'], 'integer'],
             [['isValid', 'intro'], 'string'],
             [['usedAt', 'archivedAt', 'createdAt', 'updatedAt'], 'safe'],
             [['workflowName'], 'string', 'max' => 128],
+            [['document'], 'string', 'max' => 32],
         ];
     }
 
@@ -59,6 +61,7 @@ class Workflow extends \yii\db\ActiveRecord
         return [
             'id' => Yii::t('app', 'ID'),
             'workflowName' => Yii::t('app', 'Workflow Name'),
+            'document' => Yii::t('app', 'Document'),
             'startTask' => Yii::t('app', 'Start Task'),
             'isValid' => Yii::t('app', 'Is Valid'),
             'intro' => Yii::t('app', 'Intro'),

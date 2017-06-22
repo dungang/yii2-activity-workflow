@@ -14,7 +14,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'document')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'workflowId')->dropDownList(\dungang\activity\workflow\models\Workflow::dropItems()) ?>
+    <?= $form->field($model, 'workflowId')->dropDownList(\dungang\activity\workflow\models\Workflow::dropItems(),['prompt' => '']) ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 

@@ -24,7 +24,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'triggerSource')->radioList([ 'AUTO' => 'AUTO', 'USER' => 'USER', 'MSG' => 'MSG', 'TIME' => 'TIME', ], ['prompt' => '']) ?>
 
-    <?= $form->field($model, 'timeLimit')->textInput() ?>
+    <?php // $form->field($model, 'timeLimit')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>

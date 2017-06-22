@@ -28,6 +28,7 @@ class m170118_095547_create_workflow_table extends Migration
         $this->createTable('wf_workflow', [
             'id' => $this->primaryKey()->unsigned(),
             'workflowName'=>$this->string(128)->notNull(),
+            'document'=>$this->string(32)->notNull()->defaultValue(''),
             'startTask'=>$this->integer()->notNull()->defaultValue(0)->comment('Required. The identity of the application task which, when executed, creates a new workflow case and puts a token on the start place.'),
             'isValid enum("YES","NO","USED","ARCHIVED") default "NO" COMMENT "Default is NO. After defining all the places, transitions and arcs for a workflow process it must be validated before it can be used. This field shows the result of that validation."',
             'intro'=>$this->text(),
@@ -131,7 +132,7 @@ class m170118_095547_create_workflow_table extends Migration
         $this->createTable('wf_document', [
             'id' => $this->primaryKey()->unsigned(),
             'document'=>$this->string(32)->notNull()->unique(),
-            'workflowId'=> $this->integer()->notNull()->unsigned(),
+            'workflowId'=> $this->integer()->defaultValue(0)->unsigned(),
             'name'=>$this->string(128)->notNull(),
             'docModel'=>$this->string(128),
             'intro'=>$this->text(),
