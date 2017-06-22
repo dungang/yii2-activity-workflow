@@ -34,7 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'updatedAt',
             // 'updatedUser',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'dungang\mjax\ActionColumn'],
         ],
     ]); ?>
     <?php Pjax::end(); ?>

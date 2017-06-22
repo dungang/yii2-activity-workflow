@@ -8,7 +8,7 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 <div>
-        <?php $form = ActiveForm::begin(['id'=>'place-form']); ?>
+        <?php $form = ActiveForm::begin(['id'=>'place-form','options'=>['data-point-form'=>true,'data-point-event'=>'beforeSubmit']]); ?>
 
         <?= $form->field($model, 'placeName')->textInput(['maxlength' => true]) ?>
 

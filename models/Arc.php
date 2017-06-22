@@ -13,6 +13,7 @@ use Yii;
  * @property string $direction
  * @property string $arcType
  * @property string $conditionExpress guard
+ * @property string $conditionIntro
  * @property string $createdAt The date and time on which this record was created.
  * @property int $createdUser The identity of the user who created this record.
  * @property string $updatedAt The date and time on which this record was last changed.
@@ -46,6 +47,7 @@ class Arc extends \yii\db\ActiveRecord
             [['direction', 'arcType'], 'string'],
             [['createdAt', 'updatedAt'], 'safe'],
             [['conditionExpress'], 'string', 'max' => 255],
+            [['conditionIntro'], 'string', 'max' => 64],
         ];
     }
 
@@ -61,6 +63,7 @@ class Arc extends \yii\db\ActiveRecord
             'direction' => Yii::t('app', 'Direction'),
             'arcType' => Yii::t('app', 'Arc Type'),
             'conditionExpress' => Yii::t('app', 'Condition Express'),
+            'conditionIntro' => Yii::t('app', 'Condition Intro'),
             'createdAt' => Yii::t('app', 'Created At'),
             'createdUser' => Yii::t('app', 'Created User'),
             'updatedAt' => Yii::t('app', 'Updated At'),

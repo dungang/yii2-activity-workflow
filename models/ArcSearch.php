@@ -19,7 +19,7 @@ class ArcSearch extends Arc
     {
         return [
             [['workflowId', 'placeId', 'transitionId', 'createdUser', 'updatedUser'], 'integer'],
-            [['direction', 'arcType', 'conditionExpress', 'createdAt', 'updatedAt'], 'safe'],
+            [['direction', 'arcType', 'conditionExpress', 'conditionIntro', 'createdAt', 'updatedAt'], 'safe'],
         ];
     }
 
@@ -70,6 +70,7 @@ class ArcSearch extends Arc
 
         $query->andFilterWhere(['like', 'direction', $this->direction])
             ->andFilterWhere(['like', 'arcType', $this->arcType])
+            ->andFilterWhere(['like', 'conditionIntro', $this->conditionIntro])
             ->andFilterWhere(['like', 'conditionExpress', $this->conditionExpress]);
 
         return $dataProvider;

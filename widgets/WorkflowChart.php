@@ -65,21 +65,34 @@ class WorkflowChart extends Widget
         $this->options['id'] = $id = $this->getId();
         /* @var $places Place[] */
         $places = array_map(function( Place $place){
-            switch ($place->placeType) {
-                case 'START': $level = 1;break;
-                case 'END': $level = 9;break;
-                default: $level = 5;
-            }
-            return [
+            $node =  [
                 'id'=>'p'.$place->id,
                 'label'=>$place->placeName,
                 'color'=>$this->placeColor,
                 'shape'=>'circle',
-                'level'=>$level,
+                'level'=>1,
                 'title'=>$place->intro,
                 'margin'=>10,
                 'font'=>['color'=>'white','size'=>18]
             ];
+            switch ($place->placeType) {
+                case 'START':
+                    $node['level'] = 1;
+                    $node['color'] = [
+                        'border'=>$this->placeColor,
+                        'background'=>'white'
+                    ];
+                    $node['font']['color'] = $this->placeColor;
+                    break;
+                case 'END':
+                    $node['color']='black';
+                    $node['level'] = 9;
+                    break;
+                default:
+                    $node['level'] = 5;
+            }
+            return $node;
+
         },$this->places);
 
         $transitions =  array_map(function( Transition $transition){
@@ -89,18 +102,21 @@ class WorkflowChart extends Widget
                 'color'=>$this->transitionColor,
                 'size'=> 40,
                 'shape'=>'box',
+                'title'=>$transition->intro,
                 'margin'=>16,
                 'font'=>['color'=>'white']
             ];
         },$this->transitions);
         $edges = array_map(function( Arc $arc){
+
             if ($arc->direction == 'IN') {
                 return [
                     'arrows'=>'to',
                     'from'=>'p'.$arc->placeId,
                     'to' => 't'.$arc->transitionId,
                     'color'=>$this->arcColor,
-                    'label'=>$arc->conditionExpress,
+                    'font'=>['size'=>6],
+                    'label'=>$arc->conditionIntro?$arc->conditionIntro:'',
                 ];
             } else {
                 return [
@@ -108,7 +124,8 @@ class WorkflowChart extends Widget
                     'from' => 't'.$arc->transitionId,
                     'to'=>'p'.$arc->placeId,
                     'color'=>$this->arcColor,
-                    'label'=>$arc->conditionExpress,
+                    'font'=>['size'=>6],
+                    'label'=>$arc->conditionIntro?$arc->conditionIntro:'',
                 ];
             }
         },$this->arcs);

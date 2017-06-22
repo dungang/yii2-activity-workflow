@@ -23,6 +23,8 @@ use yii\widgets\ActiveForm;
 
             <?= $form->field($model, 'conditionExpress')->textarea(['maxlength' => true]) ?>
 
+            <?= $form->field($model, 'conditionIntro')->textarea(['maxlength' => true]) ?>
+
             <div class="form-group">
                 <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>
             </div>
